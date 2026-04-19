@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propeller – Your Next Win Starts in Minutes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+background: #0a0e1a;
+color: #e2e8f0;
+font-family: ‘DM Sans’, Arial, sans-serif;
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: flex-start;
+padding: 32px 16px 60px;
+overflow-x: hidden;
+}
+
+body::before {
+content: ‘’;
+position: fixed;
+top: -200px; left: 50%;
+transform: translateX(-50%);
+width: 700px; height: 500px;
+background: radial-gradient(ellipse, rgba(34,211,238,0.09) 0%, transparent 70%);
+pointer-events: none;
+z-index: 0;
+}
+body::after {
+content: ‘’;
+position: fixed;
+bottom: -100px; left: 50%;
+transform: translateX(-50%);
+width: 500px; height: 400px;
+background: radial-gradient(ellipse, rgba(245,158,11,0.08) 0%, transparent 70%);
+pointer-events: none;
+z-index: 0;
+}
+
+.card {
+position: relative;
+z-index: 1;
+background: linear-gradient(160deg, #131b2e 0%, #0d1120 100%);
+border: 1px solid rgba(255,255,255,0.08);
+border-radius: 24px;
+max-width: 420px;
+width: 100%;
+padding: 40px 32px 36px;
+box-shadow: 0 32px 80px rgba(0,0,0,0.7), 0 0 0 1px rgba(255,255,255,0.04) inset;
+animation: fadeUp 0.7s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+@keyframes fadeUp {
+from { opacity: 0; transform: translateY(28px); }
+to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Logo ── */
+.logo-row {
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 10px;
+margin-bottom: 20px;
+animation: fadeUp 0.6s 0.1s both;
+}
+.logo-icon {
+width: 68px; height: 68px;
+background: linear-gradient(135deg, #1e293b, #1a2744);
+border-radius: 50%;
+border: 1px solid rgba(34,211,238,0.25);
+display: flex; align-items: center; justify-content: center;
+box-shadow: 0 4px 24px rgba(0,0,0,0.5), 0 0 20px rgba(34,211,238,0.1);
+animation: spin 6s linear infinite;
+}
+@keyframes spin {
+from { transform: rotate(0deg); }
+to   { transform: rotate(360deg); }
+}
+.logo-name {
+font-family: ‘Syne’, Arial Black, sans-serif;
+font-size: 22px;
+font-weight: 800;
+letter-spacing: 0.12em;
+color: #ffffff;
+}
+
+/* ── Live badge ── */
+.live-badge {
+display: inline-flex;
+align-items: center;
+gap: 7px;
+background: rgba(34,197,94,0.13);
+border: 1px solid rgba(34,197,94,0.3);
+border-radius: 100px;
+padding: 5px 14px 5px 10px;
+font-size: 12px;
+font-weight: 600;
+color: #22c55e;
+margin-bottom: 18px;
+animation: fadeUp 0.6s 0.12s both;
+}
+.live-dot {
+width: 8px; height: 8px;
+background: #22c55e;
+border-radius: 50%;
+animation: blink 1.2s infinite;
+}
+@keyframes blink {
+0%,100% { opacity: 1; }
+50%      { opacity: 0.2; }
+}
+
+/* ── Headline ── */
+.headline {
+font-family: ‘Syne’, Arial Black, sans-serif;
+font-size: 32px;
+font-weight: 800;
+text-align: center;
+color: #ffffff;
+letter-spacing: -0.01em;
+margin-bottom: 10px;
+animation: fadeUp 0.6s 0.15s both;
+}
+
+/* ── Social proof ── */
+.social-proof {
+text-align: center;
+font-size: 13.5px;
+color: #94a3b8;
+margin-bottom: 26px;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 6px;
+flex-wrap: wrap;
+animation: fadeUp 0.6s 0.2s both;
+}
+.social-proof strong { color: #e2e8f0; }
+.social-proof .dot { color: rgba(255,255,255,0.2); }
+
+/* ── Stats ── */
+.stats {
+display: flex;
+justify-content: space-around;
+text-align: center;
+margin-bottom: 24px;
+animation: fadeUp 0.6s 0.25s both;
+}
+.stat-val {
+font-family: ‘Syne’, Arial Black, sans-serif;
+font-size: 22px;
+font-weight: 800;
+color: #ffffff;
+}
+.stat-val span { color: #22d3ee; }
+.stat-label { font-size: 11px; color: #94a3b8; margin-top: 3px; }
+
+/* ── Divider ── */
+.divider {
+height: 1px;
+background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+margin: 20px 0;
+}
+
+/* ── Top CTA button ── */
+.cta-btn-top {
+display: inline-block;
+padding: 10px 16px;
+background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fb923c 100%);
+border: none;
+border-radius: 10px;
+font-family: ‘Syne’, Arial Black, sans-serif;
+font-size: 11px;
+font-weight: 800;
+letter-spacing: 0.05em;
+text-transform: uppercase;
+color: #0a0e1a;
+cursor: pointer;
+text-decoration: none;
+text-align: center;
+overflow: hidden;
+position: relative;
+box-shadow: 0 4px 20px rgba(245,158,11,0.5);
+transition: transform 0.15s, box-shadow 0.15s;
+white-space: nowrap;
+}
+.cta-btn-top::before {
+content: ‘’;
+position: absolute;
+top: 0; left: -100%; width: 60%; height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+transform: skewX(-20deg);
+animation: btnShine 2.4s 1.5s infinite;
+}
+@keyframes btnShine {
+0%   { left: -100%; }
+60%  { left: 150%; }
+100% { left: 150%; }
+}
+.cta-btn-top:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(245,158,11,0.6); }
+
+/* ── Tagline box ── */
+.tagline {
+background: linear-gradient(90deg, #1a2d4a, #12223a);
+border: 1px solid rgba(59,130,246,0.3);
+border-radius: 14px;
+padding: 18px 20px;
+text-align: center;
+margin-bottom: 20px;
+position: relative;
+overflow: hidden;
+animation: fadeUp 0.6s 0.3s both;
+}
+.tagline::before {
+content: ‘’;
+position: absolute; inset: 0;
+background: linear-gradient(90deg, transparent, rgba(34,211,238,0.05), transparent);
+animation: shimmer 3s infinite;
+}
+@keyframes shimmer {
+0%   { transform: translateX(-100%); }
+100% { transform: translateX(100%); }
+}
+.tagline-main {
+font-family: ‘Syne’, Arial Black, sans-serif;
+font-size: 20px;
+font-weight: 800;
+color: #22d3ee;
+text-transform: uppercase;
+letter-spacing: 0.04em;
+line-height: 1.3;
+}
+
+/* ── Body copy ── */
+.body-copy {
+text-align: center;
+font-size: 14.5px;
+color: #94a3b8;
+line-height: 1.65;
+margin-bottom: 16px;
+animation: fadeUp 0.6s 0.33s both;
+}
+.emphasis {
+font-size: 14.5px;
+font-weight: 600;
+color: #e2e8f0;
+text-align: center;
+margin-bottom: 24px;
+line-height: 1.6;
+animation: fadeUp 0.6s 0.36s both;
+}
+
+/* ── Pills ── */
+.pills {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+justify-content: center;
+margin-bottom: 28px;
+animation: fadeUp 0.6s 0.4s both;
+}
+.pill {
+background: rgba(255,255,255,0.06);
+border: 1px solid rgba(255,255,255,0.12);
+border-radius: 100px;
+padding: 8px 16px;
+font-size: 13px;
+font-weight: 500;
+color: #e2e8f0;
+display: flex; align-items: center; gap: 6px;
+transition: background 0.2s;
+}
+.pill:hover { background: rgba(255,255,255,0.1); }
+
+/* ── Countdown ── */
+.countdown-wrap {
+text-align: center;
+margin-bottom: 26px;
+animation: fadeUp 0.6s 0.44s both;
+}
+.countdown-label {
+font-size: 11px;
+font-weight: 600;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: #94a3b8;
+margin-bottom: 6px;
+}
+.countdown {
+font-family: ‘Syne’, Arial Black, sans-serif;
+font-size: 52px;
+font-weight: 800;
+color: #ef4444;
+letter-spacing: -0.02em;
+line-height: 1;
+animation: redpulse 1s ease-in-out infinite alternate;
+}
+@keyframes redpulse {
+from { text-shadow: 0 0 20px rgba(239,68,68,0.4); }
+to   { text-shadow: 0 0 55px rgba(239,68,68,0.8); }
+}
+
+/* ── Main CTA ── */
+.cta-btn {
+display: block;
+width: 100%;
+padding: 19px 24px;
+background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 50%, #fb923c 100%);
+border: none;
+border-radius: 14px;
+font-family: ‘Syne’, Arial Black, sans-serif;
+font-size: 18px;
+font-weight: 800;
+letter-spacing: 0.04em;
+text-transform: uppercase;
+color: #0a0e1a;
+cursor: pointer;
+text-decoration: none;
+text-align: center;
+position: relative;
+overflow: hidden;
+box-shadow: 0 8px 36px rgba(245,158,11,0.45);
+transition: transform 0.15s, box-shadow 0.15s;
+animation: fadeUp 0.6s 0.5s both;
+}
+.cta-btn::before {
+content: ‘’;
+position: absolute;
+top: 0; left: -100%; width: 60%; height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
+transform: skewX(-20deg);
+animation: btnShine 2.4s 1.2s infinite;
+}
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 44px rgba(245,158,11,0.55); }
+.cta-btn:active { transform: translateY(0); }
+
+/* ── Trust line ── */
+.trust {
+margin-top: 16px;
+text-align: center;
+font-size: 12px;
+color: rgba(148,163,184,0.55);
+display: flex; align-items: center; justify-content: center; gap: 5px;
+animation: fadeUp 0.6s 0.54s both;
+}
+</style>
+
+</head>
+<body>
+
+<div class="card">
+
+  <!-- Logo -->
+
+  <div class="logo-row">
+    <div class="logo-icon">
+      <svg viewBox="0 0 64 64" width="42" height="42" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="32" cy="16" rx="7" ry="14" fill="#22d3ee" transform="rotate(0 32 32)" opacity="0.95"/>
+        <ellipse cx="32" cy="16" rx="7" ry="14" fill="#22d3ee" transform="rotate(120 32 32)" opacity="0.8"/>
+        <ellipse cx="32" cy="16" rx="7" ry="14" fill="#22d3ee" transform="rotate(240 32 32)" opacity="0.65"/>
+        <circle cx="32" cy="32" r="7" fill="#0d1325" stroke="#22d3ee" stroke-width="2.5"/>
+        <circle cx="32" cy="32" r="3" fill="#22d3ee"/>
+      </svg>
+    </div>
+    <span class="logo-name">PROPELLER</span>
+  </div>
+
+  <!-- Live badge -->
+
+  <div style="display:flex; justify-content:center;">
+    <div class="live-badge">
+      <div class="live-dot"></div>
+      Live Signals Active
+    </div>
+  </div>
+
+  <!-- Headline -->
+
+  <div class="headline" style="margin-top:16px;">PROPELLER</div>
+
+  <!-- Social proof -->
+
+  <div class="social-proof">
+    <span>🔥</span>
+    <strong>40,000+</strong> traders already joined
+    <span class="dot">•</span>
+    Live signals + AI automation
+  </div>
+
+  <!-- Stats -->
+
+  <div class="stats">
+    <div>
+      <div class="stat-val">40K<span>+</span></div>
+      <div class="stat-label">Active Traders</div>
+    </div>
+    <div>
+      <div class="stat-val">24<span>/7</span></div>
+      <div class="stat-label">AI Trading</div>
+    </div>
+    <div>
+      <div class="stat-val"><span>$</span>50</div>
+      <div class="stat-label">Free Bonus</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- Top CTA button standalone -->
+
+  <div style="display:flex; justify-content:flex-end; margin-bottom:14px;">
+    <a href="https://t.me/+_vQDAo_dmr4wN2U8" target="_blank" class="cta-btn-top">GET $50 FREE NOW</a>
+  </div>
+
+  <!-- Tagline -->
+
+  <div class="tagline">
+    <div class="tagline-main">Your Next Win Starts<br>in Minutes 🚀</div>
+  </div>
+
+  <!-- Body copy -->
+
+  <p class="body-copy">
+    This AI is already placing high-probability trades for beginners and experienced traders.
+  </p>
+
+  <p class="emphasis">
+    No stress. No guessing.<br>
+    You join — the system does the work.
+  </p>
+
+  <!-- Pills -->
+
+  <div class="pills">
+    <div class="pill">✅ Beginner Friendly</div>
+    <div class="pill">⚡ Fast Setup</div>
+    <div class="pill">🤖 AI Trades 24/7</div>
+  </div>
+
+  <!-- Countdown -->
+
+  <div class="countdown-wrap">
+    <div class="countdown-label">Offer expires in</div>
+    <div class="countdown" id="timer">6:00:00</div>
+  </div>
+
+  <!-- Main CTA -->
+
+<a href="https://t.me/+_vQDAo_dmr4wN2U8" target="_blank" class="cta-btn">GET $50 FREE NOW</a>
+
+  <!-- Trust -->
+
+  <div class="trust">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    </svg>
+    Secure · No credit card required · Instant access
+  </div>
+
+</div>
+
+<script>
+  let totalSeconds = 6 * 60 * 60;
+  const el = document.getElementById('timer');
+  function tick() {
+    if (totalSeconds <= 0) { el.textContent = '0:00:00'; return; }
+    totalSeconds--;
+    const h = Math.floor(totalSeconds / 3600);
+    const m = Math.floor((totalSeconds % 3600) / 60);
+    const s = totalSeconds % 60;
+    el.textContent = `${h}:${m.toString().padStart(2,'0')}:${s.toString().padStart(2,'0')}`;
+    setTimeout(tick, 1000);
+  }
+  setTimeout(tick, 1000);
+</script>
+
+</body>
+</html>
